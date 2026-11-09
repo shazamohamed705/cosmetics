@@ -1,0 +1,234 @@
+/* ─── Google Fonts — must be first ─────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap");
+
+@import "tailwindcss";
+
+/* ─── Brand theme tokens (Tailwind v4 CSS-first config) ─────────────────── */
+@theme {
+  /* Brand palette */
+  --color-brand-DEFAULT: #C08666;
+  --color-brand-light:   #d4a48a;
+  --color-brand-dark:    #9a6340;
+  --color-brand-50:      #faf4ef;
+  --color-brand-100:     #f2e4d6;
+  --color-brand-200:     #e4c9ad;
+  --color-brand-300:     #d4a48a;
+  --color-brand-400:     #c99070;
+  --color-brand-500:     #C08666;
+  --color-brand-600:     #a86e50;
+  --color-brand-700:     #8c5840;
+  --color-brand-800:     #724534;
+  --color-brand-900:     #5a3427;
+
+  /* Typography */
+  --font-sans:  "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+}
+
+/* ─── Marquee (scrolling announcement) ─────────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Hero slider progress bar ─────────────────────────────────────────── */
+@keyframes hero-progress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ─── Product card stagger-in ───────────────────────────────────────────── */
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-card-in {
+  animation: card-in 0.35s ease-out both;
+}
+
+/* ─── PDP — main image swap ─────────────────────────────────────────────── */
+@keyframes pdp-img-in {
+  from { opacity: 0; transform: scale(1.03); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ─── PDP — tab content slide-in ────────────────────────────────────────── */
+@keyframes pdp-tab-in {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── Brand marquee (faster, distinct from announcement) ────────────────── */
+@keyframes brand-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-brand-scroll {
+  display: flex;
+  width: max-content;
+  animation: brand-scroll 30s linear infinite;
+}
+
+.animate-brand-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Fade-up on scroll (IntersectionObserver powered) ──────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.55s ease-out both;
+}
+
+/* ─── Trust icon pulse ring ─────────────────────────────────────────────── */
+@keyframes ring-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(192,134,102,0.35); }
+  70%  { box-shadow: 0 0 0 10px rgba(192,134,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(192,134,102,0); }
+}
+
+.trust-icon-ring:hover {
+  animation: ring-pulse 0.7s ease-out;
+}
+
+/* ─── Cart badge pop animation ─────────────────────────────────────────── */
+@keyframes cart-pop {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.55); }
+  60%  { transform: scale(0.88); }
+  80%  { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+.animate-cart-pop {
+  animation: cart-pop 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* ─── Add-to-cart button press ──────────────────────────────────────────── */
+@keyframes btn-squish {
+  0%   { transform: scale(1); }
+  25%  { transform: scaleX(1.08) scaleY(0.88); }
+  55%  { transform: scaleX(0.95) scaleY(1.06); }
+  80%  { transform: scaleX(1.02) scaleY(0.98); }
+  100% { transform: scale(1); }
+}
+
+/* Cart icon flies up then comes back */
+@keyframes icon-fly {
+  0%   { transform: translateY(0)   scale(1);    opacity: 1; }
+  40%  { transform: translateY(-8px) scale(1.2); opacity: 1; }
+  65%  { transform: translateY(-14px) scale(0.9); opacity: 0; }
+  66%  { transform: translateY(6px)  scale(0.8); opacity: 0; }
+  100% { transform: translateY(0)   scale(1);    opacity: 1; }
+}
+
+/* Checkmark flash after add */
+@keyframes check-flash {
+  0%   { opacity: 0; transform: scale(0.5); }
+  40%  { opacity: 1; transform: scale(1.2); }
+  70%  { opacity: 1; transform: scale(1);   }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+.btn-squish-active {
+  animation: btn-squish 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.icon-fly-active {
+  animation: icon-fly 0.55s ease-in-out both;
+}
+
+.check-flash-active {
+  animation: check-flash 0.6s ease-out both;
+}
+
+/* ─── Hide scrollbar (keep scrollable) ─────────────────────────────────── */
+.hide-scrollbar {
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;               /* Chrome/Safari */
+}
+
+/* ─── Horizontal scroll carousels — allow vertical page scroll on mobile ── */
+/*
+ * Without this, a finger dragging left/right on a horizontal overflow
+ * container steals the touch event even when the user intends to scroll
+ * the page vertically. pan-x pan-y lets the browser handle both axes,
+ * so a mostly-vertical swipe falls through to the page scroll correctly.
+ */
+.overflow-x-auto,
+.snap-x {
+  touch-action: pan-x pan-y;
+}
+
+/* ─── Fix: Tailwind v4 hover color specificity ──────────────────────────── */
+/*
+ * Tailwind v4 generates all utilities in a single @layer utilities block,
+ * which means specificity is determined by source order rather than the
+ * variant modifier. A later base `text-*` class can therefore beat an
+ * earlier `hover:text-*` class at the same specificity level.
+ *
+ * Solution: re-declare the hover rules OUTSIDE the utilities layer so they
+ * sit in the normal cascade and always win over anything inside the layer.
+ */
+
+/* text-color hover fixes */
+.hover\:text-white:hover  { color: #ffffff; }
+.hover\:text-brand:hover  { color: #C08666; }
+
+/* bg-color hover fixes — ensure bg-brand is always applied on hover */
+.hover\:bg-brand:hover    { background-color: #C08666; }
+.hover\:bg-brand-dark:hover { background-color: #9a6340; }
+.hover\:bg-brand-50:hover { background-color: #faf4ef; }
+
+/* group-hover fixes */
+.group:hover .group-hover\:text-white  { color: #ffffff; }
+.group:hover .group-hover\:text-brand  { color: #C08666; }
+.group:hover .group-hover\:bg-brand    { background-color: #C08666; }
+.group:hover .group-hover\:border-brand { border-color: #C08666; }
+
+/* active state fixes */
+.active\:bg-brand-dark:active { background-color: #9a6340; }
+
+/* ─── Base styles ───────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  max-width: 100%;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
+}
